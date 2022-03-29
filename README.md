@@ -1,5 +1,5 @@
 <h5>Credit <a href="https://github.com/zaneGittins/go-inject">zaneGittins</a> & <a href="https://github.com/Ne0nd0g/go-shellcode/tree/master/cmd"> Ne0nd0g </a></h5>
-<h5>Never scan these exploits on public scanners.</h5>
+<h1 style="color:red">Never scan these exploits on public scanners.</h1>
 This tool is created after combining online go injectors and some custom code.<hr>
 
 <h4>Injection can be performed in following</h4>
