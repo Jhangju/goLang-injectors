@@ -19,7 +19,7 @@ This repository will help you to inject
    <li>Syscall</li>
    <li>UuidFromString</li>
    <li>CreateProcessWithPipe</li>
-  </lo>
+  </ol>
   <h4>Things needed</h4>
    <ol>
   <li>Go Lang Installed</li>
@@ -29,7 +29,7 @@ This repository will help you to inject
   </lo>
   <h3>Usage</h3>
   <ol>
-<li>At first place your payload, donut.exe(<a href="https://github.com/Jhangju/portable-executable-2-hex-code/blob/main/donut.exe">click here to download donut.exe</a>) and pe2hex.exe(<a href="https://github.com/Jhangju/portable-executable-2-hex-code/blob/main/pe2hex/pe2hex/bin/Debug/pe2hex.exe">click here to download pe2hex.exe</a>) in same folder.</ol>
+<li>At first place your payload, donut.exe(<a href="https://github.com/Jhangju/portable-executable-2-hex-code/blob/main/donut.exe">click here to download donut.exe</a>) and pe2hex.exe(<a href="https://github.com/Jhangju/portable-executable-2-hex-code/blob/main/pe2hex/pe2hex/bin/Debug/pe2hex.exe">click here to download pe2hex.exe</a>) in same folder.
 <li>Start donut.exe -f {YouPayload.exe} //you will get payload.bin which is independent binary.</li>
 <li>Start pe2hex.exe -h {payload.bin}  //You will get hex.txt which is an independent hex code of you exploit.</li>
 <li>Now just update hex code in any of top go file</li>
